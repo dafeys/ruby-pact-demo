@@ -1,0 +1,50 @@
+{
+  "consumer": {
+    "name": "UserApiClient"
+  },
+  "provider": {
+    "name": "UserService"
+  },
+  "interactions": [
+    {
+      "description": "a request for user 1",
+      "providerState": "a user with ID 1 exists",
+      "request": {
+        "method": "get",
+        "path": "/users/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 1,
+          "name": "Samara Morgan"
+        }
+      }
+    },
+    {
+      "description": "a request for user 999",
+      "providerState": "a user with ID 999 does not exist",
+      "request": {
+        "method": "get",
+        "path": "/users/999"
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "error": "User not found"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
